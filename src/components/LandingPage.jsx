@@ -211,6 +211,7 @@ function LandingPage({ onSignIn }) {
         <div className={styles.container}>
           <p>Guitar Store Inventory</p>
           <p>React + Vite Practical Exam Project</p>
+          <p>Vincent Angelo D. Tafalla</p>
           <p>{currentYear}</p>
         </div>
       </footer>
