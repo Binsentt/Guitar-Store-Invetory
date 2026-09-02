@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import GuitarForm from './GuitarForm'
 import InventoryTable from './InventoryTable'
 import { initialGuitars } from '../data/initialGuitars'
@@ -8,8 +8,14 @@ function WorkspaceShell({ currentUser, onLogout }) {
   const [workspaceView, setWorkspaceView] = useState('register')
   const [guitars, setGuitars] = useState(initialGuitars)
   const [selectedGuitarId, setSelectedGuitarId] = useState(initialGuitars[0]?.id ?? null)
+  const [activeGuitar, setActiveGuitar] = useState(initialGuitars[0] ?? null)
 
-  const selectedGuitar = guitars.find((guitar) => guitar.id === selectedGuitarId) ?? null
+  useEffect(() => {
+    const matchingGuitar = guitars.find((guitar) => guitar.id === selectedGuitarId) ?? null
+
+    // eslint-disable-next-line react-hooks/set-state-in-effect -- Required by the practical exam for selected-row synchronization.
+    setActiveGuitar(matchingGuitar)
+  }, [selectedGuitarId, guitars])
 
   const handleAddGuitar = (guitar) => {
     setGuitars((current) => [guitar, ...current])
@@ -74,31 +80,31 @@ function WorkspaceShell({ currentUser, onLogout }) {
               />
 
               <div className={styles.detailCard} aria-live="polite">
-                {selectedGuitar ? (
+                {activeGuitar ? (
                   <>
                     <p className={styles.statusLabel}>Active Guitar</p>
-                    <h2>{selectedGuitar.guitarModel}</h2>
+                    <h2>{activeGuitar.guitarModel}</h2>
 
                     <div className={styles.detailGrid}>
                       <div>
                         <span className={styles.detailKey}>Brand</span>
-                        <strong>{selectedGuitar.brandName}</strong>
+                        <strong>{activeGuitar.brandName}</strong>
                       </div>
                       <div>
                         <span className={styles.detailKey}>Body Type</span>
-                        <strong>{selectedGuitar.bodyType}</strong>
+                        <strong>{activeGuitar.bodyType}</strong>
                       </div>
                       <div>
                         <span className={styles.detailKey}>Stock</span>
-                        <strong>{selectedGuitar.stockQuantity} units</strong>
+                        <strong>{activeGuitar.stockQuantity} units</strong>
                       </div>
                       <div>
                         <span className={styles.detailKey}>Manufacturer</span>
-                        <strong>{selectedGuitar.manufacturerName}</strong>
+                        <strong>{activeGuitar.manufacturerName}</strong>
                       </div>
                       <div>
                         <span className={styles.detailKey}>Role</span>
-                        <strong>{selectedGuitar.userRole}</strong>
+                        <strong>{activeGuitar.userRole}</strong>
                       </div>
                     </div>
                   </>
