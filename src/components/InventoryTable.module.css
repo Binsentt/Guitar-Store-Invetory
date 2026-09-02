@@ -1,0 +1,164 @@
+.tableSection {
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: var(--surface);
+  padding: 1.25rem;
+}
+
+.filterBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filterField,
+.checkboxField {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.filterField {
+  min-width: 180px;
+}
+
+.filterField select {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  min-height: 2.75rem;
+  padding: 0.7rem 0.8rem;
+}
+
+.checkboxField {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 0.5rem;
+  min-height: 2.75rem;
+}
+
+.checkboxField input {
+  accent-color: var(--accent);
+}
+
+.resetButton,
+.pageButton {
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: transparent;
+  color: var(--text-primary);
+  min-height: 2.8rem;
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.resetButton:hover,
+.pageButton:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.tableWrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.table th,
+.table td {
+  padding: 0.8rem 0.9rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  color: var(--text-primary);
+}
+
+.table th {
+  background: rgba(255, 255, 255, 0.02);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.selectedRow {
+  background: rgba(197, 138, 74, 0.08);
+}
+
+.roleBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(197, 138, 74, 0.12);
+  color: var(--text-primary);
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 0.3rem 0.55rem;
+}
+
+.emptyState {
+  border: 1px solid var(--border);
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.paginationBar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  color: var(--text-secondary);
+}
+
+.pageMeta,
+.resultMeta {
+  font-size: 0.9rem;
+}
+
+.pageButton:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 640px) {
+  .filterBar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterField,
+  .checkboxField,
+  .resetButton,
+  .pageButton {
+    width: 100%;
+  }
+
+  .paginationBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
