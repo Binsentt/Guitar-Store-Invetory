@@ -141,6 +141,48 @@
   color: var(--text-secondary);
 }
 
+.detailCard {
+  margin-top: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.5rem;
+}
+
+.detailCard h2 {
+  margin: 0 0 1rem;
+  color: var(--text-primary);
+  font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+.detailGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.detailGrid div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.detailKey {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.detailGrid strong {
+  color: var(--text-primary);
+  font-size: 1rem;
+}
+
 @media (max-width: 640px) {
   .topBar {
     flex-direction: column;
