@@ -4,7 +4,7 @@
 }
 
 .container {
-  width: min(100%, 920px);
+  width: min(100%, 1100px);
   margin: 0 auto;
 }
 
@@ -33,6 +33,19 @@
   box-shadow: 0 0 0 2px rgba(197, 138, 74, 0.18);
 }
 
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.userText {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  word-break: break-word;
+}
+
 .signOutButton {
   border: 1px solid var(--border);
   border-radius: 0.75rem;
@@ -55,6 +68,13 @@
   border-radius: 1rem;
   box-shadow: 0 16px 28px rgba(0, 0, 0, 0.12);
   padding: 2rem 1.5rem;
+}
+
+.descriptionRow {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .statusLabel {
@@ -80,48 +100,45 @@
   line-height: 1.7;
 }
 
-.userRow {
-  display: flex;
+.workspaceNav {
+  display: inline-flex;
   flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.9rem 1rem;
-  border: 1px solid var(--border);
-  border-radius: 0.8rem;
-  background: rgba(255, 255, 255, 0.02);
-  color: var(--text-secondary);
+  gap: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
-.userRow strong {
-  color: var(--text-primary);
-  word-break: break-word;
-}
-
-.userLabel {
-  font-weight: 600;
-}
-
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1rem;
-}
-
-.infoCard {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 1rem;
+.navButton,
+.navButtonActive {
+  border-radius: 0.75rem;
   border: 1px solid var(--border);
-  border-radius: 0.8rem;
-  background: var(--surface-raised);
-  color: var(--text-secondary);
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
-.infoCard strong {
+.navButton {
+  background: transparent;
   color: var(--text-primary);
-  font-size: 1.05rem;
+}
+
+.navButtonActive {
+  background: rgba(197, 138, 74, 0.12);
+  border-color: var(--accent);
+  color: var(--text-primary);
+}
+
+.navButton:hover,
+.navButtonActive:hover {
+  transform: translateY(-1px);
+}
+
+.placeholderCard {
+  border: 1px solid var(--border);
+  border-radius: 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 1.25rem;
+  color: var(--text-secondary);
 }
 
 @media (max-width: 640px) {
@@ -130,11 +147,12 @@
     align-items: flex-start;
   }
 
-  .signOutButton {
+  .userArea {
     width: 100%;
+    justify-content: space-between;
   }
 
-  .infoGrid {
-    grid-template-columns: 1fr;
+  .signOutButton {
+    width: 100%;
   }
 }

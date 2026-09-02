@@ -1,6 +1,14 @@
+import { useState } from 'react'
+import GuitarForm from './GuitarForm'
 import styles from './WorkspaceShell.module.css'
 
 function WorkspaceShell({ currentUser, onLogout }) {
+  const [workspaceView, setWorkspaceView] = useState('register')
+
+  const handleAddGuitar = () => {
+    setWorkspaceView('inventory')
+  }
+
   return (
     <main className={styles.pageShell}>
       <div className={styles.container}>
@@ -10,34 +18,48 @@ function WorkspaceShell({ currentUser, onLogout }) {
             <span>Guitar Store Inventory</span>
           </div>
 
-          <button type="button" className={styles.signOutButton} onClick={onLogout}>
-            Sign Out
-          </button>
+          <div className={styles.userArea}>
+            <span className={styles.userText}>{currentUser?.email || 'User'}</span>
+            <button type="button" className={styles.signOutButton} onClick={onLogout}>
+              Sign Out
+            </button>
+          </div>
         </header>
 
-        <section className={styles.workspaceCard} aria-label="Temporary workspace shell">
-          <p className={styles.statusLabel}>Workspace Access</p>
-          <h1>Welcome to the Inventory Workspace</h1>
+        <section className={styles.workspaceCard} aria-label="Inventory workspace">
+          <div className={styles.descriptionRow}>
+            <div>
+              <p className={styles.statusLabel}>Workspace Access</p>
+              <h1>Inventory Workspace</h1>
+            </div>
+          </div>
+
           <p className={styles.supportingText}>
-            Your session is ready. Guitar registration and inventory records will be added in the next
-            development phase.
+            Register guitar products and review inventory records.
           </p>
 
-          <div className={styles.userRow}>
-            <span className={styles.userLabel}>Signed in as</span>
-            <strong>{currentUser?.email || 'User'}</strong>
-          </div>
+          <nav className={styles.workspaceNav} aria-label="Workspace sections">
+            <button
+              type="button"
+              className={workspaceView === 'register' ? styles.navButtonActive : styles.navButton}
+              onClick={() => setWorkspaceView('register')}
+            >
+              Register Guitar
+            </button>
+            <button
+              type="button"
+              className={workspaceView === 'inventory' ? styles.navButtonActive : styles.navButton}
+              onClick={() => setWorkspaceView('inventory')}
+            >
+              Inventory Registry
+            </button>
+          </nav>
 
-          <div className={styles.infoGrid}>
-            <article className={styles.infoCard}>
-              <span>Registration Module</span>
-              <strong>Coming next</strong>
-            </article>
-            <article className={styles.infoCard}>
-              <span>Inventory Registry</span>
-              <strong>Coming next</strong>
-            </article>
-          </div>
+          {workspaceView === 'register' ? (
+            <GuitarForm onAddGuitar={handleAddGuitar} />
+          ) : (
+            <div className={styles.placeholderCard}>Inventory records will appear here after the table module is completed.</div>
+          )}
         </section>
       </div>
     </main>
