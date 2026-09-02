@@ -72,6 +72,36 @@
   transform: translateY(-1px);
 }
 
+.desktopSignIn,
+.signInLink {
+  border: 1px solid var(--border);
+  border-radius: 0.7rem;
+  background: transparent;
+  color: var(--text-primary);
+  padding: 0.7rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.desktopSignIn:hover,
+.signInLink:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.desktopSignIn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signInLink {
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+}
+
 .menuButton {
   display: none;
   flex-direction: column;

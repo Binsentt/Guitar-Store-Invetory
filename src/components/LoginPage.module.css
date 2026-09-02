@@ -1,0 +1,201 @@
+.pageShell {
+  min-height: calc(100vh - 76px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+}
+
+.container {
+  width: min(100%, 480px);
+}
+
+.loginCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.18);
+  padding: 2rem 1.5rem;
+}
+
+.brandBlock {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.brandMark {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent) 0%, #e0b178 100%);
+  box-shadow: 0 0 0 2px rgba(197, 138, 74, 0.18);
+}
+
+.label {
+  margin: 0 0 0.6rem;
+  color: var(--accent);
+  font-size: 0.73rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.loginCard h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: clamp(2rem, 4vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.05em;
+}
+
+.helpText {
+  margin: 0.8rem 0 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+form {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.fieldGroup {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.labelText {
+  color: var(--text-primary);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  background: var(--background-secondary);
+  color: var(--text-primary);
+  padding: 0.85rem 0.9rem;
+  font: inherit;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input::placeholder {
+  color: var(--text-secondary);
+}
+
+input:focus-visible {
+  outline: 3px solid rgba(197, 138, 74, 0.2);
+  outline-offset: 2px;
+  border-color: var(--accent);
+}
+
+.inputError {
+  border-color: rgba(213, 70, 70, 0.8);
+}
+
+.passwordWrap {
+  position: relative;
+}
+
+.passwordWrap input {
+  padding-right: 4.2rem;
+}
+
+.toggleButton {
+  position: absolute;
+  right: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.toggleButton:hover {
+  background: rgba(197, 138, 74, 0.08);
+}
+
+.errorText,
+.submitError {
+  margin: 0;
+  color: #ef8a8a;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.submitError {
+  margin-top: -0.1rem;
+}
+
+.buttonRow {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.primaryButton,
+.secondaryButton {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.1rem;
+  border-radius: 0.8rem;
+  border: 1px solid transparent;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.primaryButton {
+  background: var(--accent);
+  color: #20150a;
+}
+
+.primaryButton:hover {
+  background: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.secondaryButton {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+.secondaryButton:hover {
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .loginCard {
+    padding: 1.5rem 1rem;
+  }
+
+  .buttonRow {
+    gap: 0.6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -48,11 +48,16 @@ const aboutHighlights = [
 
 const currentYear = new Date().getFullYear()
 
-function LandingPage() {
+function LandingPage({ onSignIn }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const handleNavSelection = () => {
     setIsMenuOpen(false)
+  }
+
+  const handleSignInClick = () => {
+    setIsMenuOpen(false)
+    onSignIn()
   }
 
   return (
@@ -75,6 +80,9 @@ function LandingPage() {
                   {item.label}
                 </a>
               ))}
+              <button type="button" className={styles.signInLink} onClick={handleSignInClick}>
+                Sign In
+              </button>
             </nav>
 
             <button
@@ -88,6 +96,10 @@ function LandingPage() {
               <span className={styles.menuBar} />
               <span className={styles.menuBar} />
               <span className={styles.menuBar} />
+            </button>
+
+            <button type="button" className={styles.desktopSignIn} onClick={onSignIn}>
+              Sign In
             </button>
           </div>
         </div>
