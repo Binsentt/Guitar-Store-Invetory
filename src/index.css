@@ -1,0 +1,63 @@
+:root {
+  --background: #0f1115;
+  --background-secondary: #13161c;
+  --surface: #191d24;
+  --surface-raised: #20252e;
+  --border: #303641;
+  --text-primary: #ece8e1;
+  --text-secondary: #a4a8b0;
+  --accent: #c58a4a;
+  --accent-hover: #d49a5a;
+  --success: #86a98c;
+  --shadow-soft: rgba(0, 0, 0, 0.18);
+
+  font-family: Inter, 'Segoe UI', Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-primary);
+  background: var(--background);
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(197, 138, 74, 0.08), transparent 30%),
+    var(--background);
+  color: var(--text-primary);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  font: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
