@@ -134,7 +134,7 @@ function WorkspaceShell({ currentUser, onLogout }) {
                       </div>
                       <div>
                         <span className={styles.detailKey}>Role</span>
-                        <strong>{activeGuitar.userRole}</strong>
+                        <span className={styles.roleBadge}>{activeGuitar.userRole}</span>
                       </div>
                     </div>
                   </>

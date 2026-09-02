@@ -183,6 +183,18 @@
   font-size: 1rem;
 }
 
+.roleBadge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(197, 138, 74, 0.55);
+  border-radius: 999px;
+  background: rgba(197, 138, 74, 0.12);
+  color: #e0b178;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
 @media (max-width: 640px) {
   .topBar {
     flex-direction: column;
