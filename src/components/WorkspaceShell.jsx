@@ -4,10 +4,32 @@ import InventoryTable from './InventoryTable'
 import { initialGuitars } from '../data/initialGuitars'
 import styles from './WorkspaceShell.module.css'
 
+const INVENTORY_STORAGE_KEY = 'guitar-store-inventory-v1'
+
+function loadStoredGuitars() {
+  try {
+    const storedInventory = localStorage.getItem(INVENTORY_STORAGE_KEY)
+
+    if (!storedInventory) {
+      return initialGuitars
+    }
+
+    const parsedInventory = JSON.parse(storedInventory)
+
+    if (!Array.isArray(parsedInventory)) {
+      return initialGuitars
+    }
+
+    return parsedInventory
+  } catch {
+    return initialGuitars
+  }
+}
+
 function WorkspaceShell({ currentUser, onLogout }) {
   const [workspaceView, setWorkspaceView] = useState('register')
-  const [guitars, setGuitars] = useState(initialGuitars)
-  const [selectedGuitarId, setSelectedGuitarId] = useState(initialGuitars[0]?.id ?? null)
+  const [guitars, setGuitars] = useState(loadStoredGuitars)
+  const [selectedGuitarId, setSelectedGuitarId] = useState(() => guitars[0]?.id ?? null)
   const [activeGuitar, setActiveGuitar] = useState(initialGuitars[0] ?? null)
 
   useEffect(() => {
@@ -16,6 +38,14 @@ function WorkspaceShell({ currentUser, onLogout }) {
     // eslint-disable-next-line react-hooks/set-state-in-effect -- Required by the practical exam for selected-row synchronization.
     setActiveGuitar(matchingGuitar)
   }, [selectedGuitarId, guitars])
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(INVENTORY_STORAGE_KEY, JSON.stringify(guitars))
+    } catch {
+      // Keep the application working if browser storage is unavailable.
+    }
+  }, [guitars])
 
   const handleAddGuitar = (guitar) => {
     setGuitars((current) => [guitar, ...current])
