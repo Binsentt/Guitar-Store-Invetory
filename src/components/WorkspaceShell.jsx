@@ -62,12 +62,14 @@ function WorkspaceShell({ currentUser, onLogout }) {
             <span>Guitar Store Inventory</span>
           </div>
 
-          <div className={styles.userArea}>
-            <span className={styles.userText}>{currentUser?.email || 'User'}</span>
-            <button type="button" className={styles.signOutButton} onClick={onLogout}>
-              Sign Out
-            </button>
-          </div>
+          {currentUser && onLogout ? (
+            <div className={styles.userArea}>
+              <span className={styles.userText}>{currentUser.email}</span>
+              <button type="button" className={styles.signOutButton} onClick={onLogout}>
+                Sign Out
+              </button>
+            </div>
+          ) : null}
         </header>
 
         <section className={styles.workspaceCard} aria-label="Inventory workspace">
@@ -79,7 +81,7 @@ function WorkspaceShell({ currentUser, onLogout }) {
           </div>
 
           <p className={styles.supportingText}>
-            Register guitar products and review inventory records.
+            Add guitar products and review inventory records.
           </p>
 
           <nav className={styles.workspaceNav} aria-label="Workspace sections">
@@ -88,7 +90,7 @@ function WorkspaceShell({ currentUser, onLogout }) {
               className={workspaceView === 'register' ? styles.navButtonActive : styles.navButton}
               onClick={() => setWorkspaceView('register')}
             >
-              Register Guitar
+              Add Guitar
             </button>
             <button
               type="button"

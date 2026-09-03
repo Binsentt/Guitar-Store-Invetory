@@ -144,14 +144,14 @@ function GuitarForm({ onAddGuitar }) {
     }
 
     onAddGuitar(newGuitar)
-    setSuccessMessage('Guitar registered successfully.')
+    setSuccessMessage('Guitar added successfully.')
     resetForm()
   }
 
   return (
     <section className={styles.formSection} aria-label="Guitar registration form">
       <div className={styles.cardHeader}>
-        <h2>Register Guitar</h2>
+        <h2>Add Guitar</h2>
       </div>
 
       <form className={styles.form} onSubmit={handleSubmit} noValidate>
